@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d27">
+<title>Where the Stars Learn Her Name ✦</title>
+
+<style>
+:root {
+  --night: #100d27;
+  --deep: #191333;
+  --purple: #b8a2ff;
+  --pink: #ffc5e5;
+  --gold: #ffe3a4;
+  --white: #fff8ff;
+  --muted: #c8bfdc;
+  --glass: rgba(255,255,255,.065);
+  --line: rgba(255,255,255,.15);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 15% 15%, #30204f 0, transparent 38%),
+    radial-gradient(ellipse at 90% 55%, #291b46 0, transparent 35%),
+    linear-gradient(160deg, #100d27, #17112f 55%, #0c1027);
+  font-family: Georgia, "Times New Roman", serif;
+  overflow-x: hidden;
+}
+button, textarea, input { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, textarea:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+#sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+main, footer, nav { position: relative; z-index: 1; }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px clamp(16px, 5vw, 64px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(13,10,32,.35);
+  backdrop-filter: blur(10px);
+}
+.brand { letter-spacing: 2px; font-size: .85rem; color: var(--pink); }
+.nav-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+button {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.07);
+  color: var(--white);
+  border-radius: 999px;
+  padding: 10px 16px;
+  transition: .25s ease;
+}
+button:hover {
+  background: rgba(184,162,255,.19);
+  border-color: var(--purple);
+  transform: translateY(-2px);
+}
+.hero {
+  min-height: 85vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 80px 22px 65px;
+}
+.hero-inner { max-width: 850px; animation: arrive 1.4s ease both; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--gold);
+  font-size: .72rem;
+}
+h1 {
+  font-weight: normal;
+  font-size: clamp(2.8rem, 8vw, 6.6rem);
+  line-height: 1.02;
+  margin: 24px 0;
+  text-wrap: balance;
+}
+h1 span {
+  display: block;
+  font-style: italic;
+  color: var(--pink);
+}
+.hero p {
+  max-width: 610px;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 1.08rem;
+}
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.primary {
+  color: #17102c;
+  background: linear-gradient(120deg, var(--pink), var(--gold));
+  border: none;
+}
+.primary:hover { background: var(--gold); }
+.scroll-hint {
+  margin-top: 70px;
+  font-size: .8rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  animation: float 3s ease-in-out infinite;
+}
+section {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 75px 22px;
+}
+.section-heading { text-align: center; margin-bottom: 36px; }
+.section-heading .eyebrow { margin-bottom: 14px; }
+h2 {
+  font-weight: normal;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  margin: 0 0 16px;
+}
+.section-heading p {
+  max-width: 610px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.divider {
+  text-align: center;
+  color: var(--gold);
+  letter-spacing: 10px;
+  opacity: .8;
+}
+.poem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+.poem-card {
+  position: relative;
+  min-height: 185px;
+  text-align: left;
+  padding: 24px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+  overflow: hidden;
+}
+.poem-card::after {
+  content: "✧";
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
+  font-size: 2rem;
+  color: var(--pink);
+  opacity: .6;
+}
+.poem-card .symbol { color: var(--gold); font-size: 1.2rem; }
+.poem-card h3 { font-weight: normal; font-size: 1.35rem; margin: 16px 0 8px; }
+.poem-card p { color: var(--muted); font-size: .9rem; line-height: 1.6; margin: 0; }
+.poem-card:hover { border-color: var(--pink); background: rgba(184,162,255,.12); }
+.fishing {
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: clamp(24px, 5vw, 55px) 18px;
+  background: radial-gradient(ellipse at center, rgba(104,78,163,.2), transparent 75%);
+}
+.star-field {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  max-width: 640px;
+  margin: 30px auto;
+  gap: 12px;
+}
+.star {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--gold);
+  font-size: clamp(1.4rem, 5vw, 2.8rem);
+  animation: twinkle 3s ease-in-out infinite;
+}
+.star:nth-child(3n) { animation-delay: -1s; color: var(--pink); }
+.star:nth-child(2n) { animation-delay: -2s; color: var(--purple); }
+.star:hover { transform: scale(1.3) rotate(12deg); background: rgba(255,255,255,.1); }
+.star-message {
+  max-width: 570px;
+  min-height: 120px;
+  margin: 25px auto 0;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.13);
+  color: var(--pink);
+  font-size: 1.2rem;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+.letter {
+  max-width: 780px;
+  margin: auto;
+  padding: clamp(25px, 5vw, 55px);
+  border: 1px solid rgba(255,227,164,.3);
+  border-radius: 6px 30px 6px 30px;
+  background: linear-gradient(135deg, rgba(255,227,164,.07), rgba(255,255,255,.025));
+  box-shadow: 0 20px 70px rgba(0,0,0,.12);
+}
+.letter .salutation { color: var(--gold); font-size: 1.5rem; }
+.letter p { line-height: 2; color: #e9e0f5; white-space: pre-line; }
+.signature { color: var(--pink) !important; font-style: italic; font-size: 1.25rem; }
+.secret-wrap { text-align: center; }
+.secret {
+  display: none;
+  max-width: 650px;
+  margin: 28px auto 0;
+  color: var(--pink);
+  line-height: 2;
+  font-size: 1.2rem;
+  animation: arrive .8s ease both;
+}
+.secret.show { display: block; }
+.editor {
+  max-width: 760px;
+  margin: auto;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.045);
+  border-radius: 22px;
+  padding: 25px;
+}
+.editor details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+.editor details:last-child { border-bottom: 0; }
+.editor summary { cursor: pointer; color: var(--gold); }
+.editor label { display: block; color: var(--muted); margin: 18px 0 8px; font-size: .9rem; }
+.editor input, .editor textarea {
+  width: 100%;
+  padding: 12px;
+  color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(0,0,0,.22);
+}
+.editor textarea { resize: vertical; min-height: 115px; line-height: 1.7; }
+.editor .help { color: var(--muted); font-size: .85rem; line-height: 1.7; }
+.editor-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+footer { text-align: center; padding: 45px 20px 65px; color: var(--muted); font-size: .9rem; line-height: 2; }
+footer span { color: var(--pink); }
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  background: rgba(6,4,18,.8);
+  backdrop-filter: blur(12px);
+}
+.modal.open { display: grid; }
+.modal-card {
+  width: min(620px, 100%);
+  max-height: 85vh;
+  overflow: auto;
+  position: relative;
+  padding: clamp(25px, 5vw, 48px);
+  border: 1px solid rgba(255,197,229,.35);
+  border-radius: 22px;
+  text-align: center;
+  background: linear-gradient(145deg, #282044, #131027);
+  animation: arrive .4s ease both;
+}
+.modal-card h2 { color: var(--pink); font-size: 2.4rem; }
+.modal-card p { white-space: pre-line; color: #eee4fb; line-height: 2; }
+.close { position: absolute; top: 12px; right: 12px; }
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes twinkle {
+  0%,100% { opacity: .5; transform: scale(.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@media (max-width: 760px) {
+  .poem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .poem-card { min-height: 170px; padding: 19px 15px; }
+  nav { align-items: flex-start; }
+}
+@media (max-width: 440px) {
+  .poem-grid { grid-template-columns: 1fr; }
+  .poem-card { min-height: auto; }
+  .star-field { gap: 4px; }
+  .brand { max-width: 130px; line-height: 1.6; }
+  nav { padding: 15px; }
+  .nav-actions button { padding: 8px 10px; font-size: .8rem; }
+  section { padding-top: 55px; padding-bottom: 55px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="brand">✦ A LITTLE COSMOS FOR YASHI</div>
+  <div class="nav-actions">
+    <button id="musicButton" type="button">♫ Music: Off</button>
+    <button type="button" onclick="document.querySelector('#workshop').scrollIntoView({behavior:'smooth'})">✎ Edit</button>
+  </div>
+</nav>
+
+<main>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">A universe written in stardust</div>
+      <h1>Where the Stars <span>Learn Her Name</span></h1>
+      <p>
+        Somewhere between the stars and the silence, there is a girl
+        who makes ordinary moments feel like celestial events.
+        This little universe was made for her.
+      </p>
+      <div class="hero-buttons">
+        <button class="primary" onclick="document.querySelector('#poems').scrollIntoView({behavior:'smooth'})">
+          Discover her constellations ✧
+        </button>
+        <button onclick="document.querySelector('#fishing').scrollIntoView({behavior:'smooth'})">
+          Catch a star ⭐
+        </button>
+      </div>
+      <div class="scroll-hint">SCROLL SLOWLY · THERE ARE LITTLE THINGS TO FIND ↓</div>
+    </div>
+  </header>
+
+  <div class="divider">✦ · · · ✧ · · · ✦</div>
+
+  <section id="poems">
+    <div class="section-heading">
+      <div class="eyebrow">A thousand tiny reasons</div>
+      <h2>Her Own Little Constellations</h2>
+      <p>
+        Every star holds a poem. Every poem remembers a detail.
+        Choose one, and let the universe tell you what it noticed.
+      </p>
+    </div>
+    <div class="poem-grid" id="poemGrid"></div>
+  </section>
+
+  <section id="fishing">
+    <div class="section-heading">
+      <div class="eyebrow">A small game of fate</div>
+      <h2>Go Star Fishing</h2>
+      <p>
+        Choose any star in the little night sky below.
+        Some wishes arrive as whispers; some arrive as words.
+      </p>
+    </div>
+    <div class="fishing">
+      <div class="eyebrow">Choose a star, my love ✧</div>
+      <div class="star-field" id="starField"></div>
+      <div class="star-message" id="starMessage" aria-live="polite">
+        Your first star is waiting for you. Tap any little light above. ♡
+      </div>
+      <button style="margin-top:20px" onclick="nextStar()">Surprise me with another ✨</button>
+    </div>
+  </section>
+
+  <section id="letterSection">
+    <div class="section-heading">
+      <div class="eyebrow">A letter from one little universe</div>
+      <h2>For the Girl in the Princess Gown</h2>
+    </div>
+    <article class="letter">
+      <div class="salutation" id="letterSalutation">My Yashiiii, 💗</div>
+      <p id="letterText"></p>
+      <p class="signature" id="letterSignature">— Your Vikram, always ✧</p>
+    </article>
+  </section>
+
+  <section class="secret-wrap">
+    <div class="section-heading">
+      <div class="eyebrow">Not everything reveals itself at once</div>
+      <h2>A Star Kept Just for You</h2>
+      <p>There is one more little secret tucked away in this universe.</p>
+    </div>
+    <button class="primary" id="secretButton">Make a wish and uncover it ✦</button>
+    <div class="secret" id="secretText"></div>
+  </section>
+
+  <section id="workshop">
+    <div class="section-heading">
+      <div class="eyebrow">The keeper of this little universe</div>
+      <h2>Your Writing Desk</h2>
+      <p>
+        Change the poems, write new ones, or leave her a letter.
+        Your edits are saved in this browser. You can also export your
+        changes into a new HTML file to upload to GitHub.
+      </p>
+    </div>
+
+    <div class="editor">
+      <details>
+        <summary>✧ Edit an existing poem</summary>
+        <label for="poemSelect">Choose a constellation</label>
+        <select id="poemSelect" style="width:100%;padding:12px;background:#211a3b;color:white;border:1px solid var(--line);border-radius:10px"></select>
+        <label for="poemTitle">Poem title</label>
+        <input id="poemTitle" maxlength="100">
+        <label for="poemBody">Your poem</label>
+        <textarea id="poemBody" maxlength="5000"></textarea>
+        <div class="editor-actions">
+          <button class="primary" id="savePoem">Save poem</button>
+        </div>
+      </details>
+
+      <details>
+        <summary>✧ Add a new constellation</summary>
+        <label for="newTitle">Title</label>
+        <input id="newTitle" maxlength="100" placeholder="The way she laughs">
+        <label for="newBody">Poem</label>
+        <textarea id="newBody" maxlength="5000" placeholder="Write what your heart remembers..."></textarea>
+        <div class="editor-actions">
+          <button class="primary" id="addPoem">Add constellation</button>
+        </div>
+      </details>
+
+      <details>
+        <summary>✧ Rewrite the letter</summary>
+        <label for="salutationInput">Greeting</label>
+        <input id="salutationInput" maxlength="200">
+        <label for="letterInput">Letter text</label>
+        <textarea id="letterInput" maxlength="10000"></textarea>
+        <label for="signatureInput">Sign-off</label>
+        <input id="signatureInput" maxlength="200">
+        <div class="editor-actions">
+          <button class="primary" id="saveLetter">Save letter</button>
+        </div>
+      </details>
+
+      <details>
+        <summary>✧ Personalise the stars</summary>
+        <label for="starsInput">One message per line (up to 20)</label>
+        <textarea id="starsInput" maxlength="6000"></textarea>
+        <label for="secretInput">Hidden surprise</label>
+        <textarea id="secretInput" maxlength="3000"></textarea>
+        <div class="editor-actions">
+          <button class="primary" id="saveStars">Save surprises</button>
+        </div>
+      </details>
+
+      <div class="editor-actions">
+        <button class="primary" id="exportButton">Download my updated HTML</button>
+        <button id="resetButton">Reset to original</button>
+      </div>
+      <p class="help">
+        Important: browser-saved edits are local to this device and browser.
+        To make them appear on your published website, use “Download my updated HTML”
+        and upload that downloaded file to GitHub, replacing the old index.html.
+        Resetting clears your saved edits in this browser.
+      </p>
+      <p class="help" id="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Made of midnight, little wishes, and a ridiculous amount of affection. <span>♡</span><br>
+  For Yashi, whose smallest details deserve their own sky. ✧
+</footer>
+
+<div class="modal" id="poemModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <article class="modal-card">
+    <button class="close" id="closeModal" aria-label="Close poem">✕</button>
+    <div class="eyebrow">One little piece of infinity</div>
+    <h2 id="modalTitle"></h2>
+    <p id="modalBody"></p>
+    <div class="divider">✧ · ♡ · ✧</div>
+  </article>
+</div>
+
+<script>
+"use strict";
+
+/* =========================================================
+   YOUR CONTENT
+   Edit the poems and letter in the Writing Desk on the page.
+   ========================================================= */
+
+const ORIGINAL = {
+  poems: [
+    {
+      icon: "☾",
+      title: "Her Hair, Like Midnight",
+      preview: "A thousand little shadows, caught in the light...",
+      body: `Your hair fell like a midnight sky,
+with little stars caught here and there;
+and even all the moonlight
+seemed to pause and admire it there.
+
+Each strand had found its own small dance,
+each accessory its place to stay;
+and I, who thought I knew the stars,
+found new ones in your hair that day.`
+    },
+    {
+      icon: "✧",
+      title: "The Face I Keep Remembering",
+      preview: "Somewhere between a glance and a smile...",
+      body: `There are a thousand skies above,
+and countless worlds beyond my view;
+yet when I think of something lovely,
+my thoughts keep finding their way to you.
+
+The quiet grace upon your face,
+the little expressions that come and go—
+I wish the world could slow a little
+so I could notice all I know.`
+    },
+    {
+      icon: "♛",
+      title: "A Princess, Without a Kingdom",
+      preview: "The gown was lovely. You were the wonder...",
+      body: `The gown carried a royal kind of grace,
+the accessories caught the light;
+but neither crown nor royal fabric
+could explain that lovely sight.
+
+For princesses are not made by gowns,
+nor by jewels or a grand display;
+sometimes royalty is simply a girl
+who makes the world look softer that day.`
+    },
+    {
+      icon: "♡",
+      title: "Her Hands",
+      preview: "Even the smallest gestures deserve a poem...",
+      body: `I noticed the hands that moved so gently,
+the little gestures you never planned;
+and wondered how a moment so ordinary
+could feel so precious where I stand.
+
+Perhaps it is not the grandest things
+that make a memory understand;
+perhaps my heart just likes remembering
+the quiet poetry of your hands.`
+    },
+    {
+      icon: "✿",
+      title: "A Poem for Her Nails",
+      preview: "A detail the universe might have missed...",
+      body: `The smallest details often escape
+the hurried eyes that pass them by;
+but I was there, collecting moments,
+while you were getting ready nearby.
+
+Even your nails became a line
+in this little poem I made;
+because when I look at you with wonder,
+no lovely detail should fade.`
+    },
+    {
+      icon: "☼",
+      title: "Her Height, Her Presence",
+      preview: "Some people enter a room and change its weather...",
+      body: `I could write the numbers down,
+describe the way you stand;
+but neither measure could explain
+the wonder I don't understand.
+
+For presence has no ruler,
+and grace no height to prove;
+some people simply change a room
+by being there, the way you do.`
+    },
+    {
+      icon: "☼",
+      title: "That Smile",
+      preview: "A little sunshine, arriving without warning...",
+      body: `Somewhere the sun forgot its work
+and left a little warmth with you;
+you wear it in the smallest smiles,
+in things you never mean to do.
+
+And when that smile appears,
+my thoughts forget their careful art;
+the stars may keep their ancient paths,
+but yours still wanders through my heart.`
+    },
+    {
+      icon: "✦",
+      title: "Her Hair Accessories",
+      preview: "Little stars resting among the stars...",
+      body: `Those little ornaments in your hair
+caught light in their own quiet way;
+like tiny constellations choosing
+to rest beside you for a day.
+
+I loved the care in every detail,
+the thought that made the whole look shine;
+and how a thousand little choices
+made that moment feel divine.`
+    },
+    {
+      icon: "☁",
+      title: "While You Were Getting Ready",
+      preview: "The ordinary became a memory...",
+      body: `You were getting ready on a screen,
+and time was passing as it should;
+yet something in that simple moment
+made the ordinary feel so good.
+
+No grand occasion, no distant stage,
+just you, becoming ready for the day;
+and somehow all my restless thoughts
+grew quiet while I watched that way.
+
+I wish I could explain it better,
+but perhaps the truth is small:
+I was simply happy to be there,
+to witness you, and that was all.`
+    },
+    {
+      icon: "∞",
+      title: "More Than What Eyes Can See",
+      preview: "A thousand poems, and still not the whole of you...",
+      body: `I could write about your eyes and hair,
+your hands, your gown, the way you smile;
+I could fill a sky with little poems
+and keep writing all the while.
+
+But beauty is not the whole of you,
+nor could these verses ever be;
+there is a whole, unfinished universe
+in everything I cannot see.
+
+So let these lines be little windows,
+not a measure of your worth;
+I write them because I love the details,
+and the person who gives them birth.`
+    }
+  ],
+
+  letter: {
+    greeting: "My Yashiiii, 💗",
+    body: `I keep thinking about that video call, and I don't think you realise how lovely that little moment became for me.
+
+You were getting ready in your princess gown, arranging your hair and accessories, and I was sitting there watching you turn an ordinary moment into a memory I know I'll keep. You probably saw it as simply getting ready, but I saw a hundred tiny things I wanted to remember: the way your hair fell, the little details you chose, your hands moving as you adjusted things, and the care you put into the whole look.
+
+And the funny thing is, I don't think it was only about how beautiful you looked. Of course you looked gorgeous, meri rani. 🥹 But I was also happy that I got to be there, sharing that small piece of your day with you. There was something so sweet about seeing you as you were, without needing a grand occasion or a perfect photograph.
+
+That's why I wanted to make this little universe. Not because a website could ever contain all the things I notice about you, but because I wanted to give those little details somewhere to live. A poem for your hair, one for your hands, one for the gown, one for all the tiny things that might otherwise pass by unnoticed.
+
+You deserve to be appreciated as a whole person, not just as a pretty picture. I hope these poems remind you that you are so much more than the details I can describe. There are parts of you I will need a lifetime to understand, and I would rather keep learning them slowly than pretend that a few lines could ever tell your whole story.
+
+So whenever you open this little sky, choose a star and read a poem. Let it be a tiny reminder that someone noticed that moment, treasured it, and wanted to turn it into something you could keep.
+
+With all my affection, all my clumsy poetry, and a heart that is very happy it got to witness that moment—
+
+Yours, always. 💗`,
+    signature: "— Your Vikram, always ✧"
+  },
+
+  stars: [
+    "If I could keep one little moment in a bottle, it might be the one where you were simply being yourself and I got to be there. ♡",
+    "The stars are old, the universe is vast, and somehow I still found a moment that made everything feel close: you, on that call. ✧",
+    "A little reminder: you never have to look like a princess to deserve tenderness. You deserve it on your most ordinary days, too. 💗",
+    "If this star could make one wish, it would wish you could see yourself with the same kindness you give the people you love.",
+    "Some memories arrive loudly. Others sit quietly in the heart and glow for a very long time. This one is the second kind. ☾",
+    "You have no idea how many little details can become precious when they belong to a person you care about.",
+    "The gown may go back into the wardrobe, the accessories may be put away, but the memory of that moment can stay. ✦",
+    "A constellation is just a way of connecting distant lights. Perhaps poems are a little like that, too.",
+    "You are allowed to be a work in progress, a sleepy girl, a silly girl, a serious girl, and every version in between. You are still worthy of love.",
+    "One last thing, meri rani: thank you for letting me be part of your little world. 🫶🏻"
+  ],
+
+  secret: `Psst, Yashiiii. ✨
+
+If you found this, here's your secret message:
+
+You don't have to do anything extraordinary to be worth celebrating. You can be quiet, distracted, messy, sleepy, or simply yourself.
+
+And there will still be poems to write, stars to find, and little moments worth keeping.
+
+This universe is only a tiny gift. The real magic was the moment that inspired it. ♡`
+};
+
+/* =========================================================
+   SAVED CONTENT AND EDITOR
+   ========================================================= */
+
+const STORAGE_KEY = "whereTheStarsLearnHerName.v1";
+let content = loadContent();
+let activePoem = 0;
+let activeStar = -1;
+
+function cloneOriginal() {
+  return JSON.parse(JSON.stringify(ORIGINAL));
+}
+function loadContent() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && Array.isArray(parsed.poems) &&
+          parsed.letter && Array.isArray(parsed.stars)) {
+        return parsed;
+      }
+    }
+  } catch (error) {
+    console.warn("Could not load saved edits.", error);
+  }
+  return cloneOriginal();
+}
+function saveContent(message) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+    setStatus(message || "Saved in this browser. ✦");
+  } catch (error) {
+    setStatus("Could not save locally. Try exporting your HTML instead.");
+  }
+}
+function setStatus(message) {
+  document.getElementById("status").textContent = message;
+}
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  })[character]);
+}
+
+/* Poems */
+function renderPoems() {
+  const grid = document.getElementById("poemGrid");
+  grid.innerHTML = "";
+  content.poems.forEach((poem, index) => {
+    const button = document.createElement("button");
+    button.className = "poem-card";
+    button.type = "button";
+    button.innerHTML =
+      '<span class="symbol">' + escapeHTML(poem.icon || "✧") + '</span>' +
+      '<h3>' + escapeHTML(poem.title) + '</h3>' +
+      '<p>' + escapeHTML(poem.preview || "A little poem, waiting to be read.") + '</p>';
+    button.addEventListener("click", () => openPoem(index));
+    grid.appendChild(button);
+  });
+}
+function openPoem(index) {
+  activePoem = index;
+  const poem = content.poems[index];
+  if (!poem) return;
+  document.getElementById("modalTitle").textContent = poem.title;
+  document.getElementById("modalBody").textContent = poem.body;
+  document.getElementById("poemModal").classList.add("open");
+  document.getElementById("closeModal").focus();
+}
+function closePoem() {
+  document.getElementById("poemModal").classList.remove("open");
+}
+document.getElementById("closeModal").addEventListener("click", closePoem);
+document.getElementById("poemModal").addEventListener("click", event => {
+  if (event.target.id === "poemModal") closePoem();
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closePoem();
+});
+
+/* Letter */
+function renderLetter() {
+  document.getElementById("letterSalutation").textContent = content.letter.greeting;
+  document.getElementById("letterText").textContent = content.letter.body;
+  document.getElementById("letterSignature").textContent = content.letter.signature;
+}
+
+/* Star fishing */
+function renderStars() {
+  const field = document.getElementById("starField");
+  field.innerHTML = "";
+  const starCount = Math.max(1, Math.min(20, content.stars.length));
+  for (let i = 0; i < starCount; i++) {
+    const button = document.createElement("button");
+    button.className = "star";
+    button.type = "button";
+    button.textContent = ["✧", "✦", "⋆", "☆", "✩"][i % 5];
+    button.setAttribute("aria-label", "Catch star " + (i + 1));
+    button.addEventListener("click", () => catchStar(i));
+    field.appendChild(button);
+  }
+}
+function catchStar(index) {
+  if (!content.stars.length) return;
+  activeStar = index % content.stars.length;
+  document.getElementById("starMessage").textContent = content.stars[activeStar];
+}
+function nextStar() {
+  if (!content.stars.length) return;
+  let index = Math.floor(Math.random() * content.stars.length);
+  if (content.stars.length > 1 && index === activeStar) {
+    index = (index + 1) % content.stars.length;
+  }
+  catchStar(index);
+}
+
+/* Secret */
+document.getElementById("secretButton").addEventListener("click", () => {
+  const secret = document.getElementById("secretText");
+  secret.textContent = content.secret;
+  secret.classList.add("show");
+  document.getElementById("secretButton").textContent = "Your secret is waiting above ♡";
+});
+
+/* Editor */
+function fillPoemSelector() {
+  const select = document.getElementById("poemSelect");
+  select.innerHTML = "";
+  content.poems.forEach((poem, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = poem.title;
+    select.appendChild(option);
+  });
+  if (content.poems.length) {
+    select.value = Math.min(activePoem, content.poems.length - 1);
+    loadPoemIntoEditor();
+  } else {
+    document.getElementById("poemTitle").value = "";
+    document.getElementById("poemBody").value = "";
+  }
+}
+function loadPoemIntoEditor() {
+  const index = Number(document.getElementById("poemSelect").value);
+  const poem = content.poems[index];
+  if (!poem) return;
+  activePoem = index;
+  document.getElementById("poemTitle").value = poem.title;
+  document.getElementById("poemBody").value = poem.body;
+}
+document.getElementById("poemSelect").addEventListener("change", loadPoemIntoEditor);
+
+document.getElementById("savePoem").addEventListener("click", () => {
+  const index = Number(document.getElementById("poemSelect").value);
+  const poem = content.poems[index];
+  if (!poem) return;
+  const title = document.getElementById("poemTitle").value.trim();
+  const body = document.getElementById("poemBody").value.trim();
+  if (!title || !body) {
+    setStatus("Give your poem both a title and some words first. ♡");
+    return;
+  }
+  poem.title = title;
+  poem.body = body;
+  poem.preview = body.split("\n").find(line => line.trim()) || "A little poem.";
+  renderPoems();
+  fillPoemSelector();
+  saveContent("Poem saved. Your constellation has changed. ✧");
+});
+
+document.getElementById("addPoem").addEventListener("click", () => {
+  const title = document.getElementById("newTitle").value.trim();
+  const body = document.getElementById("newBody").value.trim();
+  if (!title || !body) {
+    setStatus("Add a title and poem before creating your constellation.");
+    return;
+  }
+  if (content.poems.length >= 40) {
+    setStatus("This little sky can hold up to 40 poems.");
+    return;
+  }
+  content.poems.push({
+    icon: "✧",
+    title,
+    body,
+    preview: body.split("\n").find(line => line.trim()) || "A little poem."
+  });
+  document.getElementById("newTitle").value = "";
+  document.getElementById("newBody").value = "";
+  renderPoems();
+  fillPoemSelector();
+  document.getElementById("poemSelect").value = content.poems.length - 1;
+  loadPoemIntoEditor();
+  saveContent("A new constellation has joined your sky. ✦");
+});
+
+document.getElementById("saveLetter").addEventListener("click", () => {
+  content.letter.greeting = document.getElementById("salutationInput").value;
+  content.letter.body = document.getElementById("letterInput").value;
+  content.letter.signature = document.getElementById("signatureInput").value;
+  renderLetter();
+  saveContent("Your letter has been rewritten and saved. 💌");
+});
+
+document.getElementById("saveStars").addEventListener("click", () => {
+  content.stars = document.getElementById("starsInput").value
+    .split("\n").map(s => s.trim()).filter(Boolean).slice(0, 20);
+  content.secret = document.getElementById("secretInput").value;
+  renderStars();
+  document.getElementById("starMessage").textContent =
+    "Your first star is waiting for you. Tap any little light above. ♡";
+  document.getElementById("secretText").classList.remove("show");
+  document.getElementById("secretButton").textContent = "Make a wish and uncover it ✦";
+  saveContent("Your stars and hidden surprise have been updated. ⭐");
+});
+
+function fillEditor() {
+  fillPoemSelector();
+  document.getElementById("salutationInput").value = content.letter.greeting;
+  document.getElementById("letterInput").value = content.letter.body;
+  document.getElementById("signatureInput").value = content.letter.signature;
+  document.getElementById("starsInput").value = content.stars.join("\n");
+  document.getElementById("secretInput").value = content.secret;
+}
+
+function renderAll() {
+  renderPoems();
+  renderLetter();
+  renderStars();
+  fillEditor();
+}
+document.getElementById("resetButton").addEventListener("click", () => {
+  if (!confirm("Reset all your edits in this browser and return to the original poems?")) return;
+  try { localStorage.removeItem(STORAGE_KEY); } catch (error) {}
+  content = cloneOriginal();
+  activePoem = 0;
+  activeStar = -1;
+  document.getElementById("starMessage").textContent =
+    "Your first star is waiting for you. Tap any little light above. ♡";
+  document.getElementById("secretText").classList.remove("show");
+  document.getElementById("secretButton").textContent = "Make a wish and uncover it ✦";
+  renderAll();
+  setStatus("Original content restored in this browser. ✧");
+});
+
+/* Export a new HTML file containing the current content */
+document.getElementById("exportButton").addEventListener("click", () => {
+  try {
+    const html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+    const embedded = JSON.stringify(content)
+      .replace(/</g, "\\u003c")
+      .replace(/>/g, "\\u003e")
+      .replace(/&/g, "\\u0026");
+    const marker = 'const ORIGINAL = ';
+    const start = html.indexOf(marker);
+    if (start === -1) throw new Error("Could not locate the original content.");
+
+    // Put the latest edits into the exported HTML's original content object.
+    const afterMarker = start + marker.length;
+    const objectStart = html.indexOf("{", afterMarker);
+    let depth = 0, string = false, escaped = false, objectEnd = -1;
+    for (let i = objectStart; i < html.length; i++) {
+      const ch = html[i];
+      if (string) {
+        if (escaped) escaped = false;
+        else if (ch === "\\") escaped = true;
+        else if (ch === '"') string = false;
+        continue;
+      }
+      if (ch === '"') { string = true; continue; }
+      if (ch === "{") depth++;
+      if (ch === "}") {
+        depth--;
+        if (depth === 0) { objectEnd = i + 1; break; }
+      }
+    }
+    if (objectEnd === -1) throw new Error("Could not prepare your updated content.");
+    const updatedHTML = html.slice(0, objectStart) + embedded + html.slice(objectEnd);
+
+    const blob = new Blob([updatedHTML], {type: "text/html;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "index.html";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    setStatus("Your updated index.html has been downloaded. Upload it to GitHub to publish your edits. ✦");
+  } catch (error) {
+    console.error(error);
+    setStatus("Export failed. Your edits are still saved in this browser.");
+  }
+});
+
+/* =========================================================
+   CELESTIAL CANVAS
+   ========================================================= */
+(function createSky() {
+  const canvas = document.getElementById("sky");
+  const ctx = canvas.getContext("2d");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let width = 0, height = 0, stars = [];
+
+  function resize() {
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    stars = Array.from({length: Math.min(170, Math.floor(width * height / 6500))}, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.5 + .3,
+      alpha: Math.random() * .7 + .2,
+      speed: Math.random() * .012 + .002,
+      phase: Math.random() * Math.PI * 2
+    }));
+  }
+  function draw(time) {
+    ctx.clearRect(0, 0, width, height);
+    for (const star of stars) {
+      const pulse = reducedMotion ? 0 : Math.sin(time * star.speed + star.phase) * .25;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 231, 255, ${Math.max(.12, star.alpha + pulse)})`;
+      ctx.fill();
+    }
+    if (!reducedMotion) requestAnimationFrame(draw);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+  draw(0);
+})();
+
+/* =========================================================
+   OPTIONAL AMBIENT MUSIC — GENERATED LOCALLY
+   ========================================================= */
+let audioContext = null;
+let masterGain = null;
+let musicOn = false;
+let musicNodes = [];
+let musicTimer = null;
+
+function startMusic() {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) {
+    setStatus("This browser doesn't support generated music.");
+    return;
+  }
+  if (!audioContext) {
+    audioContext = new AudioContextClass();
+    masterGain = audioContext.createGain();
+    masterGain.gain.value = 0;
+    masterGain.connect(audioContext.destination);
+  }
+  audioContext.resume().then(() => {
+    if (musicOn) return;
+    musicOn = true;
+    masterGain.gain.setTargetAtTime(.10, audioContext.currentTime, .8);
+    document.getElementById("musicButton").textContent = "♫ Music: On";
+
+    const notes = [261.63, 329.63, 392.00, 493.88, 392.00, 329.63, 293.66, 392.00];
+    let step = 0;
+    function playNote() {
+      if (!musicOn || !audioContext) return;
+      const now = audioContext.currentTime;
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.value = notes[step % notes.length];
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.14, now + .5);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + 3.3);
+      oscillator.connect(gain);
+      gain.connect(masterGain);
+      oscillator.start(now);
+      oscillator.stop(now + 3.4);
+      step++;
+      musicNodes.push(oscillator);
+    }
+    playNote();
+    musicTimer = setInterval(playNote, 2600);
+  }).catch(() => {
+    setStatus("Tap the music button again to allow audio playback.");
+  });
+}
+function stopMusic() {
+  musicOn = false;
+  if (musicTimer) clearInterval(musicTimer);
+  musicTimer = null;
+  if (masterGain && audioContext) {
+    masterGain.gain.setTargetAtTime(0, audioContext.currentTime, .25);
+  }
+  document.getElementById("musicButton").textContent = "♫ Music: Off";
+}
+document.getElementById("musicButton").addEventListener("click", () => {
+  if (musicOn) stopMusic();
+  else startMusic();
+});
+
+/* Start the universe */
+renderAll();
+</script>
+</body>
+</html>
